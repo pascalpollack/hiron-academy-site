@@ -161,13 +161,22 @@
     .steps, .paths, .tiers, .bound-grid, .faq { display: grid; gap: 16px; }
     .steps { grid-template-columns: repeat(4, 1fr); margin: 28px 0 36px; }
     .paths { grid-template-columns: repeat(3, 1fr); }
-    .tiers { grid-template-columns: repeat(3, 1fr); }
+    .tiers { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
     .card {
       background: var(--bg-2);
       border: 1px solid var(--line);
       padding: 22px;
     }
     .steps .card, .paths .card, .tiers .card { height: 100%; }
+    .tiers .card {
+      display: flex;
+      flex-direction: column;
+    }
+    .tiers .card ul { margin-bottom: 18px; }
+    .tiers .card .btn {
+      margin-top: auto;
+      align-self: center;
+    }
     .card p:last-child { margin-bottom: 0; }
     .card .btn { margin-top: 18px; }
     .num {
@@ -184,8 +193,8 @@
       margin: 8px 0 14px;
     }
     .price span { font-size: 14px; color: var(--muted); font-weight: 500; }
-    .card ul, .bound ul, .note ol { margin: 0 0 0 18px; color: var(--muted); }
-    .card li, .bound li, .note li { margin: 0 0 8px; }
+    .card ul, .bound ul, .scope-in ul, .scope-out ul, .note ol { margin: 0 0 0 18px; color: var(--muted); }
+    .card li, .bound li, .scope-in li, .scope-out li, .note li { margin: 0 0 8px; }
     .tier-free { border-top: 2px solid var(--border); }
     .tier-supporter { border-top: 2px solid var(--text); }
     .tier-hire { border-top: 2px solid var(--red); box-shadow: 0 0 0 1px var(--red-soft); }
@@ -668,7 +677,7 @@
     <section id="support">
       <div class="wrap">
         <p class="kicker">Support</p>
-        <h2>Write to us.</h2>
+        <h2>Write me to apply.</h2>
         <p>Use this form for questions about membership, lessons, a Buddy Check, or Mentoring. Replies come by email within 48 hours on weekdays (Monday–Friday, Europe/Berlin). This form is not for logins, payments, or orders — those stay in Skool for Entry, and Buddy Check or Mentoring offers come by email.</p>
         <form id="support-form" class="support-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="cb791af2-47b3-4835-9987-c2341405d9f7">
