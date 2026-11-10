@@ -223,6 +223,59 @@
     }
     .faq details[open] summary:after { content: "–"; }
     .faq details p { margin: 12px 0 4px; }
+
+    .support-form {
+      max-width: 640px;
+      margin-top: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .support-form label {
+      display: block;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .support-form input[type="text"],
+    .support-form input[type="email"],
+    .support-form select,
+    .support-form textarea {
+      width: 100%;
+      background: var(--bg-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      font: 16px/1.4 system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .support-form input:focus,
+    .support-form select:focus,
+    .support-form textarea:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+    .support-form textarea { min-height: 140px; resize: vertical; }
+    .support-form select { appearance: auto; }
+    .support-form .btn[disabled] { opacity: 0.6; cursor: wait; }
+    .support-thanks {
+      max-width: 640px;
+      margin-top: 24px;
+      background: var(--bg-1);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--red);
+      padding: 22px;
+      color: var(--text);
+    }
+    .support-error { color: var(--red); font-size: 14px; margin: 0; }
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
     footer {
       border-top: 1px solid var(--line);
       padding: 36px 0 48px;
@@ -274,6 +327,7 @@
         <a href="#hire-me">Hire Me</a>
         <a href="#welcome">Welcome</a>
         <a href="#faq">FAQ</a>
+        <a href="#support">Support</a>
       </nav>
       <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Join for $10/month</a>
     </div>
@@ -516,6 +570,53 @@
         </div>
       </div>
     </section>
+
+    <section id="support">
+      <div class="wrap">
+        <p class="kicker">Support</p>
+        <h2>Write to us.</h2>
+        <p>Use this form for questions about membership, lessons, or Hire Me. Replies come by email within 48 hours on weekdays (Monday–Friday, Europe/Berlin). This form is not for logins, payments, or orders — those stay in Skool.</p>
+        <form id="support-form" class="support-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="cb791af2-47b3-4835-9987-c2341405d9f7">
+          <input type="hidden" name="subject" id="support-subject" value="[HIRON Support]">
+          <input type="hidden" name="from_name" value="HIRON Academy">
+          <input type="hidden" name="redirect" value="https://hiron.academy/#support">
+          <div class="hp-field" aria-hidden="true">
+            <label for="botcheck">Leave this empty</label>
+            <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+          </div>
+          <div>
+            <label for="support-name">Name</label>
+            <input type="text" id="support-name" name="name" required maxlength="120" autocomplete="name">
+          </div>
+          <div>
+            <label for="support-email">Email</label>
+            <input type="email" id="support-email" name="email" required maxlength="200" autocomplete="email">
+          </div>
+          <div>
+            <label for="support-topic">Topic</label>
+            <select id="support-topic" name="topic" required>
+              <option value="" disabled selected>Choose a topic</option>
+              <option value="Membership/billing">Membership/billing</option>
+              <option value="Lessons">Lessons</option>
+              <option value="Hire Me">Hire Me</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="support-message">Message</label>
+            <textarea id="support-message" name="message" required maxlength="4000"></textarea>
+          </div>
+          <p id="support-error" class="support-error" hidden></p>
+          <div>
+            <button type="submit" class="btn">Send message</button>
+          </div>
+        </form>
+        <div id="support-thanks" class="support-thanks" hidden>
+          <p>Thank you. Your message is on its way. We will reply by email within 48 hours on weekdays.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -528,5 +629,44 @@
       <p>hiron.academy</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById("support-form");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var topic = form.topic.value || "Other";
+        form.subject.value = "[HIRON Support] " + topic;
+        var btn = form.querySelector("[type=submit]");
+        var err = document.getElementById("support-error");
+        err.hidden = true;
+        btn.disabled = true;
+        var data = new FormData(form);
+        data.delete("redirect");
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        }).then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
+          .then(function (result) {
+            if (result.json && result.json.success) {
+              form.hidden = true;
+              document.getElementById("support-thanks").hidden = false;
+            } else {
+              err.textContent = "The message could not be sent. Please try again in a moment.";
+              err.hidden = false;
+              btn.disabled = false;
+            }
+          })
+          .catch(function () {
+            err.textContent = "The message could not be sent. Please try again in a moment.";
+            err.hidden = false;
+            btn.disabled = false;
+          });
+      });
+    })();
+  </script>
 </body>
+
 </html>
