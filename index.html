@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HIRON Academy is a free Skool community for practical AI and automation. Join free, pick a start path, and put the work on a real task.">
+  <meta name="description" content="HIRON Academy is a Skool community for practical AI and automation. Join for $10/month, pick a start path, and put the work on a real task.">
   <title>HIRON Academy</title>
   <style>
     :root {
@@ -160,7 +160,8 @@
     .cta-note { color: var(--muted); font-size: 14px; }
     .steps, .paths, .tiers, .bound-grid, .faq { display: grid; gap: 16px; }
     .steps { grid-template-columns: repeat(4, 1fr); margin: 28px 0 36px; }
-    .paths, .tiers { grid-template-columns: repeat(3, 1fr); }
+    .paths { grid-template-columns: repeat(3, 1fr); }
+    .tiers { grid-template-columns: repeat(2, 1fr); }
     .card {
       background: var(--bg-2);
       border: 1px solid var(--line);
@@ -252,14 +253,15 @@
 <body>
   <!--
     PLACEHOLDER / STARTING VALUES (only Pascal can confirm or replace these):
-    - Founder Supporter cap: first 100 members, or until the next announced price step.
+    - Entry price lock: the $10/month entry price stays locked while the subscription stays active. If you cancel and rejoin later, the then-current price applies.
     - Hire Me booking link: not set. No Calendly or other scheduler URL was provided, so this page does not invent one.
     - Max concurrent Hire Me seats: not set.
     - Async volume cap: 8 substantive threads per month in the closed area (starting default).
     - Async response time: within 48 hours on workdays, Monday–Friday, Europe/Berlin (starting default).
     - Hire Me call: 1 x 60 minutes per calendar month, no automatic rollover (starting default).
     - Starter course title in the Classroom: "Start here".
-    These are the live defaults from the 2026-11-10 HIRON Academy setup. Do not treat them as final if Pascal changes them.
+    - Currency: USD only. No free tier and no 7-day free trial (as of 2026-11-10).
+    Do not treat these as final if Pascal changes them.
   -->
   <a class="skip" href="#about">Skip to about</a>
   <header class="nav">
@@ -273,7 +275,7 @@
         <a href="#welcome">Welcome</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn" href="https://www.skool.com/hiron-academy-2448">Join Free</a>
+      <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Join for $10/month</a>
     </div>
   </header>
 
@@ -292,7 +294,7 @@
             </div>
             <div class="about-item">
               <dt>Why this</dt>
-              <dd>HIRON Academy is a free Skool community for practical workflows, bots, and clear start paths. Lessons and lives ship as we build.</dd>
+              <dd>HIRON Academy is a Skool community for practical workflows, bots, and clear start paths. Lessons and lives ship as we build. Entry is $10/month.</dd>
             </div>
             <div class="about-item">
               <dt>Why me</dt>
@@ -300,15 +302,15 @@
             </div>
             <div class="about-item">
               <dt>Why no one else</dt>
-              <dd>Free to join, paths by use-case, optional Founder Supporter ($10, locked for early members) and Hire Me ($150) with a written boundary.</dd>
+              <dd>A $10 entry with the full community, paths by use-case, and Hire Me ($150) with a written boundary when you want hands-on project help.</dd>
             </div>
             <div class="about-item">
               <dt>Why now</dt>
-              <dd>First 100 Founder Supporters keep $10 while they stay. Manual busywork will not wait.</dd>
+              <dd>The entry price is $10/month and stays locked while you stay subscribed. Manual busywork will not wait.</dd>
             </div>
           </dl>
           <div class="cta-row">
-            <a class="btn" href="https://www.skool.com/hiron-academy-2448">Join Free</a>
+            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Join for $10/month</a>
             <span class="cta-note">Answer three short questions, and take your first action today.</span>
           </div>
         </section>
@@ -319,12 +321,12 @@
       <div class="wrap">
         <p class="kicker">How to start</p>
         <h2>Join, pick a path, do one small thing today.</h2>
-        <p>On the way in you answer three short questions: what you want most this month, what tools you already use, and how much time you have this week. That chooses your path. Then open the free Classroom course <strong>Start here</strong>.</p>
+        <p>On the way in you answer three short questions: what you want most this month, what tools you already use, and how much time you have this week. That chooses your path. Then open the Classroom course <strong>Start here</strong>.</p>
         <div class="steps">
           <article class="card">
             <div class="num">01</div>
-            <h3>Join free</h3>
-            <p>Create your Skool account and answer the three questions.</p>
+            <h3>Join for $10/month</h3>
+            <p>Join on Skool, in USD, and answer the three questions.</p>
           </article>
           <article class="card">
             <div class="num">02</div>
@@ -364,7 +366,7 @@
           </article>
         </div>
         <div class="cta-row">
-          <a class="btn ghost" href="https://www.skool.com/hiron-academy-2448/classroom">Open the Classroom</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Join for $10/month</a>
         </div>
       </div>
     </section>
@@ -372,49 +374,38 @@
     <section id="tiers">
       <div class="wrap">
         <p class="kicker">Membership</p>
-        <h2>Three layers. Real names, clear prices.</h2>
-        <p>The community is free to join. Paid tiers are optional. In Skool the cards may still say Standard, Premium, and VIP — those headings cannot be renamed there. The real names are the ones below.</p>
+        <h2>Two tiers. Clear prices.</h2>
+        <p>There is no free plan and no free sample classroom. In Skool the cards are labeled Standard and Premium. Here they are called Entry and Hire Me. Prices are in USD.</p>
         <div class="tiers">
-          <article class="card tier-free">
-            <div class="num">Free Member</div>
-            <div class="price">$0</div>
-            <h3>Learn without paying first.</h3>
+          <article class="card tier-supporter">
+            <div class="num">Entry</div>
+            <div class="price">$10 <span>/ month, USD</span></div>
+            <h3>The way into the Academy.</h3>
             <ul>
               <li>Full community feed</li>
-              <li>Classroom lessons as they ship, including Start here</li>
+              <li>Classroom lessons as they ship, including the Start here path</li>
               <li>Live sessions when announced</li>
-              <li>Ask questions in public posts</li>
-            </ul>
-          </article>
-          <article class="card tier-supporter">
-            <div class="num">Founder Supporter</div>
-            <div class="price">$10 <span>/ month, locked</span></div>
-            <h3>Back the Academy and help steer it.</h3>
-            <ul>
-              <li>Everything in Free</li>
-              <li>Request one lesson topic per month — that lesson becomes free for everyone</li>
-              <li>Small extras and early peeks at drafts when available</li>
-              <li>Founder badge</li>
-              <li>Your $10 rate stays locked while your subscription stays active. If you cancel and rejoin later, the then-current price applies.</li>
-              <li>Founder window: first 100 Supporters, or until the next announced step</li>
+              <li>Request lesson topics</li>
+              <li>Help with small problems</li>
+              <li>Your $10 entry price stays locked while your subscription stays active. If you cancel and rejoin later, the then-current price applies.</li>
             </ul>
           </article>
           <article class="card tier-hire">
             <div class="num">Hire Me</div>
-            <div class="price">$150 <span>/ month</span></div>
+            <div class="price">$150 <span>/ month, USD</span></div>
             <h3>Work with Pascal on your real project.</h3>
             <ul>
-              <li>Everything in Supporter</li>
-              <li>Closed Hire Me area</li>
+              <li>Everything in Entry</li>
+              <li>Book Pascal 1:1</li>
               <li>One 60-minute project call each calendar month</li>
-              <li>Async project questions answered in the closed area within 48 hours on workdays (Mon–Fri, Europe/Berlin)</li>
-              <li>Priority when slots are tight</li>
+              <li>Async project questions answered in the closed area within 48 hours on weekdays (Mon–Fri, Europe/Berlin)</li>
+              <li>Project guidance, not unlimited builds</li>
             </ul>
           </article>
         </div>
         <p class="skool-note">Joining and upgrades happen in Skool. This site does not take payments.</p>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448">Join or upgrade in Skool</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Join for $10/month</a>
         </div>
       </div>
     </section>
@@ -423,8 +414,8 @@
       <div class="wrap">
         <p class="kicker">Hire Me boundary</p>
         <h2>What the $150 tier is — and what it is not.</h2>
-        <p>Hire Me is one consulting hour’s worth of access each month: a closed project space, one 60-minute call, and weekday async answers within 48 hours. Free and Supporter get the public Academy. They do not get private project work with Pascal.</p>
-        <p>Public homework threads stay free. Hire Me is for private project work, not a fast lane on weekly community homework.</p>
+        <p>Hire Me is one consulting hour’s worth of access each month: a closed project space, one 60-minute call, and weekday async answers within 48 hours. Entry members get the Academy — feed, lessons, lives, Start here, topic requests, and help with small problems. They do not get private project work with Pascal.</p>
+        <p>Community homework threads are part of Entry. Hire Me is for private project work, not a fast lane on weekly homework.</p>
         <div class="bound-grid">
           <div class="bound">
             <article class="card">
@@ -463,7 +454,7 @@
         </div>
         <p class="skool-note">After you join Hire Me, the monthly call is booked together in the closed area. A public booking link is not on this page yet.</p>
         <div class="cta-row">
-          <a class="btn ghost" href="https://www.skool.com/hiron-academy-2448">See Hire Me in Skool</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Join for $10/month</a>
         </div>
       </div>
     </section>
@@ -475,7 +466,7 @@
         <p>Skool’s automatic welcome message needs a Pro plan, which this community does not have. The note below is the message. You will also find a pinned Start here post in the feed.</p>
         <div class="welcome">
           <p>Welcome to HIRON Academy. I am glad you are here.</p>
-          <p>This community is free and practical. You learn to put AI and automation on real work.</p>
+          <p>This community is practical. You learn to put AI and automation on real work.</p>
           <p>You answered three questions on the way in. Your start path:</p>
           <ul>
             <li>Automate one workflow → Classroom: Start here → Path A</li>
@@ -483,11 +474,7 @@
             <li>Ship or unblock a bot → Classroom: Start here → Path C</li>
           </ul>
           <p style="margin-top:14px;">Your only job today: open your path and do the first action (it takes minutes). Then introduce yourself under the pinned Start here post — name, path, and one concrete monthly outcome — so we can help.</p>
-          <p>Optional layers when you want them:</p>
-          <ul>
-            <li>Founder Supporter ($10, locked for early members): request a lesson topic each month.</li>
-            <li>Hire Me ($150): closed project help, one 60-minute call per month, weekday async within 48 hours.</li>
-          </ul>
+          <p>When you want hands-on help on your own project, Hire Me is $150/month: closed project help, one 60-minute call per month, and weekday async within 48 hours.</p>
           <p>If you get stuck, post in the feed. See you inside.</p>
           <p style="color:var(--muted);font-size:14px;">— Pascal</p>
         </div>
@@ -500,32 +487,32 @@
         <h2>Short answers.</h2>
         <div class="faq">
           <details open>
-            <summary>Is the Academy really free?</summary>
-            <p>Yes. The feed, the Classroom lessons as they ship, and live sessions when announced are free. Founder Supporter and Hire Me are optional upgrades.</p>
+            <summary>Is there a free trial?</summary>
+            <p>No. There is no free trial and no free sample of the lessons. This page and the example outcomes show what you get.</p>
           </details>
           <details>
-            <summary>Why do the Skool cards say Standard, Premium, and VIP?</summary>
-            <p>Those are Skool’s built-in headings. They cannot be renamed on the current plan. The real names are Free Member, Founder Supporter, and Hire Me, which is why they are spelled out here.</p>
+            <summary>Can I cancel?</summary>
+            <p>Yes. Membership is monthly, and you can cancel in Skool billing at any time. The $10 entry price stays locked while you stay subscribed. If you cancel and rejoin later, the then-current price applies. Hire Me access ends when the paid period ends.</p>
+          </details>
+          <details>
+            <summary>What do the Skool cards Standard and Premium mean?</summary>
+            <p>Standard is the $10 Entry: feed, lessons, lives, the Start here path, topic requests, and help with small problems. Premium is Hire Me at $150/month: book Pascal 1:1, one 60-minute call a month, weekday async within 48 hours, and project guidance — not unlimited builds.</p>
           </details>
           <details>
             <summary>What do I do first?</summary>
-            <p>Join free, answer the three questions, open the Start here course, do the first action on your path, and introduce yourself under the pinned post. Late is fine. Catch-up starts at Lesson 1.</p>
+            <p>Join for $10/month, answer the three questions, open the Start here course, do the first action on your path, and introduce yourself under the pinned post. Late is fine. Catch-up starts at Lesson 1.</p>
           </details>
           <details>
-            <summary>How does the $10 Founder rate stay locked?</summary>
-            <p>The $10 rate stays locked for as long as your Founder Supporter subscription stays active. If you cancel and come back later, the price then in effect applies. The Founder window is the first 100 Supporters, or until the next announced price step.</p>
-          </details>
-          <details>
-            <summary>What if I only want public help?</summary>
-            <p>Stay on Free. Ask in the feed. Peer help and Pascal’s best-effort public replies are part of the Academy. Hire Me is only for private project work.</p>
+            <summary>What if I only want community help, not a private project?</summary>
+            <p>Stay on Entry. Ask in the feed, follow your path, and request a topic if you are stuck. Hire Me is only for private project work with Pascal.</p>
           </details>
           <details>
             <summary>How do I join or upgrade?</summary>
-            <p>Everything is handled in the Skool community. This website does not collect payments or account details.</p>
+            <p>Everything is handled in the Skool community, in USD. This website does not collect payments or account details.</p>
           </details>
         </div>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448">Join Free on Skool</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Join for $10/month</a>
         </div>
       </div>
     </section>
