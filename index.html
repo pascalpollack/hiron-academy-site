@@ -3,19 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HIRON Academy is a Skool community for practical AI and automation. Apply for $10/month, pick a start path, and put the work on a real task.">
+  <meta name="description" content="HIRON Academy is a Skool community for practical AI and automation. Try it free for 7 days, then $10/month. Pick a start path and put the work on a real task.">
   <title>HIRON Academy</title>
   <style>
+    @font-face { font-family: Inter; src: url("assets/fonts/Inter.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: Rajdhani; src: url("assets/fonts/Rajdhani-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
     :root {
-      --bg: #050505;
-      --bg-1: #0b0b0b;
-      --bg-2: #111111;
-      --line: #343434;
-      --border: #777777;
-      --text: #ededed;
-      --muted: #969696;
-      --red: #E1262F;
-      --red-soft: rgba(225, 38, 47, 0.16);
+      /* HIRON Academy paper look (website-prototyp-v4 / stil-konsistenz) */
+      --bg: #f5f3ed;
+      --bg-1: #fffefa;
+      --bg-2: #efece4;
+      --line: #d8d5cb;
+      --border: #a9a59a;
+      --text: #20211f;
+      --muted: #55554f;
+      --red: #b91f28;
+      --signal: #E1262F;
+      --red-soft: rgba(185, 31, 40, 0.10);
+      --nav-bg: rgba(245, 243, 237, 0.94);
+      --shadow: 5px 7px 0 rgba(34, 34, 31, 0.06);
       --max: 1120px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,7 +29,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
     a { color: inherit; }
     img { max-width: 100%; }
@@ -60,7 +66,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(5, 5, 5, 0.92);
+      background: var(--nav-bg);
       border-bottom: 1px solid var(--line);
     }
     .nav-inner {
@@ -206,7 +212,7 @@
     }
     .bound-grid { grid-template-columns: 1.1fr 1fr; margin-top: 24px; align-items: start; }
     .scope-in, .scope-out { padding: 22px; border: 1px solid var(--line); background: var(--bg-1); }
-    .scope-out { border-color: #3a3a3a; }
+    .scope-out { border-color: var(--border); }
     .welcome {
       background: var(--bg-1);
       border: 1px solid var(--line);
@@ -301,6 +307,66 @@
       align-items: flex-start;
     }
     footer a { color: var(--text); }
+
+    /* ---- HIRON Academy: paperwork with dark sections ---- */
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(rgba(32, 33, 31, 0.035) 1px, transparent 1px),
+        radial-gradient(rgba(32, 33, 31, 0.025) 1px, transparent 1px);
+      background-size: 7px 7px, 11px 11px;
+      background-position: 0 0, 3px 5px;
+    }
+    h1, h2, h3, .wordmark, .price, .num, .btn {
+      font-family: Rajdhani, Inter, system-ui, sans-serif;
+    }
+    h1, h2 { letter-spacing: 0.01em; }
+    h3 { font-size: 22px; }
+    .wordmark .wm-sub { font-weight: 700; letter-spacing: 0.06em; color: var(--red); }
+    .dark .wordmark .wm-sub { color: var(--signal); }
+    .btn { color: #fffefa; font-size: 15px; white-space: nowrap; }
+    .btn:hover { background: transparent; color: var(--red); }
+    .btn.ghost { color: var(--text); }
+    .btn.ghost:hover { color: var(--text); }
+    .card, .scope-in, .scope-out, .welcome, .faq details {
+      box-shadow: var(--shadow);
+    }
+    .card, .scope-in, .scope-out, .welcome { background: var(--bg-1); }
+    .card { position: relative; }
+    .hero .about-grid, .steps .card:first-child, .tiers .card:first-child {
+      position: relative;
+    }
+    .steps .card:first-child::before, .tiers .card:first-child::before {
+      content: "";
+      position: absolute;
+      top: -9px;
+      left: 22px;
+      width: 74px;
+      height: 18px;
+      background: rgba(185, 31, 40, 0.82);
+      transform: rotate(-3deg);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    }
+    .kicker { font-family: Inter, system-ui, sans-serif; }
+    .dark {
+      --bg: #0b0b0b;
+      --bg-1: #111111;
+      --bg-2: #161616;
+      --line: #343434;
+      --border: #777777;
+      --text: #ededed;
+      --muted: #a3a3a3;
+      --red: #E1262F;
+      --red-soft: rgba(225, 38, 47, 0.16);
+      --shadow: none;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .dark .btn { color: #ffffff; }
+    .dark .btn:hover { color: var(--text); }
+    section.dark + section, section + section.dark { border-top: 0; }
+    .skip:focus { color: #fffefa; }
+    @media print { body { background: #fff; } }
     @media (max-width: 900px) {
       .steps, .paths, .tiers, .bound-grid { grid-template-columns: 1fr; }
       .about-item { grid-template-columns: 1fr; gap: 6px; }
@@ -317,22 +383,22 @@
 <body>
   <!--
     FINAL MODEL as of 2026-11-10 (Pascal, t41u + t42u). This supersedes the earlier $150/month Hire Me offer.
-    - Entry: $10/month in Skool, by application. Pascal reviews each request. Main CTA label: “Apply for $10/month”. Price stays locked while the subscription stays active. If you cancel and rejoin later, the then-current price applies.
+    - Entry: $10/month in Skool, by application. Pascal reviews each request. Main CTA label (Pascal 2026-11-23 22:22): “Try it free for 7 days”, then $10/month. Skool allows max 7 trial days for members. Price stays locked while the subscription stays active. If you cancel and rejoin later, the then-current price applies.
     - Buddy Check: $150 one-time. Pascal takes real time, no clock-watching, goes through everything until both sides know whether to work together, and gives rough directions in chat. No upsell pressure — he does not want to sell anything. Then an individual Mentoring offer by email. The $150 is credited toward the $1,500 if Mentoring is booked. If you would rather go on alone, you can book another Buddy Check anytime (for example monthly), $150 each.
     - Mentoring: $1,500/month, individual offer after the Buddy Check. That same kind of conversation, every day: coaching, building the system together, tips, help when something breaks. Contact any day, like a good friend. Fair use: not eight hours a day. Doing all of the client's work is priced separately. If there is a lot to do, an individual intensive month can be agreed. After the first month, an ongoing monthly retainer is possible.
     - Starter course title in the Classroom: "Start here".
-    - Currency: USD only. No free tier and no 7-day free trial (as of 2026-11-10).
+    - Currency: USD only. No free tier. 7-day free trial on Entry (live Skool About text 2026-11-23; Pascal 2026-11-23 asked to lead with the free test).
     - Buddy Check and Mentoring are arranged through the support form (topic: Hire Me), not through a checkout on this page.
     - FAQ “Is there a free trial?” links “his Skool profile” to https://www.skool.com/@pascal-pollack-9787 (Pascal’s real Skool profile; this replaces the earlier About-page placeholder).
     - Why paid (t44u + t45u): the Academy is not trying to be the biggest community on Skool; it is for people who want more of Pascal’s answers and personal help. He has already answered a lot for free and will not advise people for free eight hours a day. If you know him from the communities, you already know how he works; everyone else should get active there first, then apply. He looks at what you have written elsewhere and decides. Other communities he is active in are welcome to join.
     - Who this is for (t46u): builders who understand and build systems themselves, think long term, stay and support each other; Pascal builds members up to eye level so later they can tackle bigger things together and pool skills from different fields. Not for silent lurkers, quick-money-with-AI seekers, or people who just watched a creator video and want to go self-employed. Membership fees go into community infrastructure. No funding-goal figures on the page.
-    - Probation (t47u/t48u): the first 3 months are a probation period. Show up and take part. If you don’t engage or don’t fit in, you’re out, and fees are returned minus Skool’s fees. Same text in Who this is for and in the FAQ “What if it’s not a fit?”. Tone: Pascal is direct. No people-pleasing, no corporate polish, just honest answers. Beside that line, a first-person quote attributed to Pascal (t49u, wording finalized t50u): “My community, my rules. If my way of doing things doesn’t suit you, this place isn’t for you. Take your money back and go.” Immediately before the probation paragraph (t51u): “No dead memberships. Not the gym sign-up in January that’s forgotten by February. It’s not about the money, it’s about what comes out of it.”
+    - Probation DROPPED (Pascal 2026-11-18 20:48, scares people off). Replaced by the promise from the live Skool About page: first three tasks within 14 days; no working automation after 30 days means the first payment back. Tone: Pascal is direct. No people-pleasing, no corporate polish, just honest answers. Beside that line, a first-person quote attributed to Pascal (t49u, wording finalized t50u): “My community, my rules. If my way of doing things doesn’t suit you, this place isn’t for you. Take your money back and go.” Immediately before the probation paragraph (t51u): “No dead memberships. Not the gym sign-up in January that’s forgotten by February. It’s not about the money, it’s about what comes out of it.”
     - Philosophy section (t52u), after Who this is for and before pricing: “My philosophy: Confrontationism,” first-person quote attributed to Pascal. Punchy, no insults. Closing line of the quote (t55u): no casual buddies; AI friends for life who go through thick and thin and form a strong chain; weak links don’t stay. Not-for list also includes (t53u): people who call every ex or ex-friend a narcissist and never look at their own part. For list also includes (t54u): people who, after something fails, ask what their own part was, not just the other person’s. Not-for also includes (t56u): show-offs who think they’re the greatest. New section “What you get here” (t60u/t61u/t62u/t63u), after Who this is for and before Philosophy: a place to be yourself, no masks; no judgment of writing, replies, neurodivergence, or private life; only content counts; arguments and constructive criticism without shaming; plus equal treatment regardless of job status, help to grow what you can’t yet do, and potential that gets seen and pushed, including a talk if what you came for isn’t truly you (t62u); personal advice on non-tech problems is always free (t63u); closing line: we unlock your potential, not what others expect of you.
   -->
   <a class="skip" href="#about">Skip to about</a>
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="nav-logo wordmark" href="#top">HIRON<span class="dot" aria-hidden="true"></span></a>
+      <a class="nav-logo wordmark" href="#top">HIRON<span class="dot" aria-hidden="true"></span> <span class="wm-sub">Academy</span></a>
       <nav class="links" aria-label="Sections">
         <a href="#about">About</a>
         <a href="#start">Start</a>
@@ -345,7 +411,7 @@
         <a href="#faq">FAQ</a>
         <a href="#support">Support</a>
       </nav>
-      <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply for $10/month</a>
+      <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free</a>
     </div>
   </header>
 
@@ -364,7 +430,7 @@
             </div>
             <div class="about-item">
               <dt>Why this</dt>
-              <dd>HIRON Academy is a Skool community for practical workflows, bots, and clear start paths. Lessons and lives ship as we build. Entry is $10/month.</dd>
+              <dd>HIRON Academy is a Skool community for practical workflows, bots, and clear start paths. Lessons and lives ship as we build. Try it free for 7 days, then Entry is $10/month.</dd>
             </div>
             <div class="about-item">
               <dt>Why me</dt>
@@ -380,8 +446,8 @@
             </div>
           </dl>
           <div class="cta-row">
-            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply for $10/month</a>
-            <span class="cta-note">Answer three short questions, and take your first action today.</span>
+            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
+            <span class="cta-note">7 days free, then $10/month in Skool. Answer three short questions and take your first action today.</span>
           </div>
         </section>
       </div>
@@ -390,13 +456,13 @@
     <section id="start">
       <div class="wrap">
         <p class="kicker">How to start</p>
-        <h2>Apply, pick a path, do one small thing today.</h2>
+        <h2>Start free, pick a path, do one small thing today.</h2>
         <p>On the way in you answer three short questions: what you want most this month, what tools you already use, and how much time you have this week. That chooses your path. Then open the Classroom course <strong>Start here</strong>.</p>
         <div class="steps">
           <article class="card">
             <div class="num">01</div>
-            <h3>Apply for $10/month</h3>
-            <p>Apply on Skool, in USD, and answer the three questions. Pascal reviews each request.</p>
+            <h3>Start your 7-day free trial</h3>
+            <p>Join on Skool and answer the three questions. Pascal reviews each request. After 7 days, Entry is $10/month in USD. Cancel in Skool before the trial ends and you pay nothing.</p>
           </article>
           <article class="card">
             <div class="num">02</div>
@@ -436,7 +502,7 @@
           </article>
         </div>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply for $10/month</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
         </div>
       </div>
     </section>
@@ -461,7 +527,7 @@
         <p style="color:var(--text);">“My community, my rules. If my way of doing things doesn’t suit you, this place isn’t for you. Take your money back and go.”<br>
         <span style="color:var(--muted);font-size:14px;">— Pascal</span></p>
         <p>No dead memberships. Not the gym sign-up in January that’s forgotten by February. It’s not about the money, it’s about what comes out of it.</p>
-        <p>The first 3 months are a probation period. Show up and take part. If you don’t engage or don’t fit in, you’re out, and you get your fees back (minus Skool’s fees).</p>
+        <p>Our promise: do the first three tasks within 14 days. No working automation after 30 days? You get your first payment back.</p>
       </div>
     </section>
 
@@ -490,7 +556,7 @@
     </section>
 
 
-    <section id="philosophy">
+    <section id="philosophy" class="dark">
       <div class="wrap">
         <p class="kicker">Philosophy</p>
         <h2>My philosophy: Confrontationism</h2>
@@ -501,11 +567,11 @@
       </div>
     </section>
 
-    <section id="tiers">
+    <section id="tiers" class="dark">
       <div class="wrap">
         <p class="kicker">Membership</p>
         <h2>Three offers. Clear prices.</h2>
-        <p>There is no free plan and no free sample classroom. Entry is the $10/month membership in Skool, by application. Pascal reviews each request. Buddy Check and Mentoring are arranged through the support form, not through a checkout on this page. Prices are in USD.</p>
+        <p>There is no free plan. You can test Entry free for 7 days in Skool, then it is $10/month. Pascal reviews each request. Buddy Check and Mentoring are arranged through the support form, not through a checkout on this page. Prices are in USD.</p>
         <p>Why paid? The Academy isn’t trying to be the biggest community on Skool. It’s for people who want more of Pascal’s answers and personal help. Pascal has already answered a lot for free, and he won’t advise people for free eight hours a day. If you know him from the communities, you already know how he works. If you don’t yet, get active there first, then apply. He looks at what you’ve written elsewhere and decides.</p>
         <div class="tiers">
           <article class="card tier-supporter">
@@ -513,12 +579,13 @@
             <div class="price">$10 <span>/ month, USD</span></div>
             <h3>Entry to the community.</h3>
             <ul>
+              <li>7 days free to test, then $10/month</li>
               <li>All lessons as they ship, including the Start here path</li>
               <li>Community feed</li>
               <li>Live sessions when announced</li>
               <li>Your $10 entry price stays locked while your subscription stays active. If you cancel and rejoin later, the then-current price applies.</li>
             </ul>
-            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply for $10/month</a>
+            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
           </article>
           <article class="card tier-hire">
             <div class="num">Buddy Check</div>
@@ -548,9 +615,9 @@
             <a class="btn ghost" href="#support" data-support-topic="Hire Me">Start with a Buddy Check</a>
           </article>
         </div>
-        <p class="skool-note">Applying for Entry happens in Skool. Pascal reviews each request. Buddy Check and Mentoring are arranged through the support form. This site does not take payments.</p>
+        <p class="skool-note">The free trial and Entry happen in Skool. Pascal reviews each request. Buddy Check and Mentoring are arranged through the support form. This site does not take payments.</p>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply for $10/month</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
         </div>
       </div>
     </section>
@@ -602,7 +669,7 @@
         </div>
         <p class="skool-note">This site does not take payments for Buddy Check or Mentoring. Use the support form, and the offer comes by email.</p>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply for $10/month</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
           <a class="btn ghost" href="#support" data-support-topic="Hire Me">Ask about a Buddy Check</a>
         </div>
       </div>
@@ -637,7 +704,7 @@
         <div class="faq">
           <details open>
             <summary>Is there a free trial?</summary>
-            <p>No. Want to see how Pascal works first? Look at <a href="https://www.skool.com/@pascal-pollack-9787">his Skool profile</a>: his comments and threads in other communities are free to read. His profile also shows which communities he’s active in, and you’re welcome to join them. The Academy isn’t trying to be the biggest community on Skool. It’s for people who want more of Pascal’s answers and personal help. That’s why the Academy itself is paid.</p>
+            <p>Yes. Entry starts with a 7-day free trial in Skool. After that it is $10/month, and you can cancel in Skool billing before the trial ends. There is no free plan beyond the trial. Want to see how Pascal works before you start? Look at <a href="https://www.skool.com/@pascal-pollack-9787">his Skool profile</a>: his comments and threads in other communities are free to read. His profile also shows which communities he’s active in, and you’re welcome to join them. The Academy isn’t trying to be the biggest community on Skool. It’s for people who want more of Pascal’s answers and personal help. That’s why the Academy itself is paid after the trial.</p>
           </details>
           <details>
             <summary>Can I cancel?</summary>
@@ -645,7 +712,7 @@
           </details>
           <details>
             <summary>What if it’s not a fit?</summary>
-            <p>The first 3 months are a probation period. Show up and take part. If you don’t engage or don’t fit in, you’re out, and you get your fees back (minus Skool’s fees).</p>
+            <p>Cancel during the 7-day trial and you pay nothing. After that: do the first three tasks within 14 days. No working automation after 30 days? You get your first payment back.</p>
           </details>
           <details>
             <summary>How does Hire Me work?</summary>
@@ -657,7 +724,7 @@
           </details>
           <details>
             <summary>What do I do first?</summary>
-            <p>Apply for $10/month, answer the three questions, open the Start here course, do the first action on your path, and introduce yourself under the pinned post. Late is fine. Catch-up starts at Lesson 1.</p>
+            <p>Start your 7-day free trial, answer the three questions, open the Start here course, do the first action on your path, and introduce yourself under the pinned post. Late is fine. Catch-up starts at Lesson 1.</p>
           </details>
           <details>
             <summary>What if I only want the community, not personal help?</summary>
@@ -665,23 +732,23 @@
           </details>
           <details>
             <summary>How do I apply or book?</summary>
-            <p>Entry is by application in the Skool community, in USD. Pascal reviews each request. Buddy Check and Mentoring are arranged through the support form on this page. This website does not collect payments or account details.</p>
+            <p>Entry starts with a 7-day free trial in the Skool community, then $10/month in USD. Pascal reviews each request. Buddy Check and Mentoring are arranged through the support form on this page. This website does not collect payments or account details.</p>
           </details>
         </div>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply for $10/month</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
         </div>
       </div>
     </section>
 
-    <section id="support">
+    <section id="support" class="dark">
       <div class="wrap">
         <p class="kicker">Support</p>
         <h2>Write me to apply.</h2>
         <p>Use this form for questions about membership, lessons, a Buddy Check, or Mentoring. Replies come by email within 48 hours on weekdays (Monday–Friday, Europe/Berlin). This form is not for logins, payments, or orders — those stay in Skool for Entry, and Buddy Check or Mentoring offers come by email.</p>
         <form id="support-form" class="support-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="cb791af2-47b3-4835-9987-c2341405d9f7">
-          <input type="hidden" name="subject" id="support-subject" value="[HIRON Support]">
+          <input type="hidden" name="subject" id="support-subject" value="[HIRON Academy Support]">
           <input type="hidden" name="from_name" value="HIRON Academy">
           <input type="hidden" name="redirect" value="https://hiron.academy/#support">
           <div class="hp-field" aria-hidden="true">
@@ -722,10 +789,10 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="dark">
     <div class="wrap foot">
       <div>
-        <div class="wordmark" style="font-size:20px;color:var(--text);margin-bottom:8px;">HIRON<span class="dot" aria-hidden="true"></span></div>
+        <div class="wordmark" style="font-size:20px;color:var(--text);margin-bottom:8px;">HIRON<span class="dot" aria-hidden="true"></span> <span class="wm-sub">Academy</span></div>
         <p>HIRON Academy · Pascal Pollack</p>
         <p>Community: <a href="https://www.skool.com/hiron-academy-2448">skool.com/hiron-academy-2448</a></p>
       </div>
@@ -755,7 +822,7 @@
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         var topic = form.topic.value || "Other";
-        form.subject.value = "[HIRON Support] " + topic;
+        form.subject.value = "[HIRON Academy Support] " + topic;
         var btn = form.querySelector("[type=submit]");
         var err = document.getElementById("support-error");
         err.hidden = true;
