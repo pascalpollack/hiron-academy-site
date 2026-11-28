@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HIRON Academy is a Skool community for practical AI and automation. Try it free for 7 days, then $10/month. Pick a start path and put the work on a real task.">
+  <meta name="description" content="HIRON Academy is a Skool community for people already running AI agents. Free members get the Start Here course only. Membership is $49/month (about 45 EUR), by application.">
   <title>HIRON Academy</title>
   <style>
     @font-face { font-family: Inter; src: url("assets/fonts/Inter.woff2") format("woff2"); font-display: swap; }
@@ -73,25 +73,28 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       min-height: 64px;
     }
     .nav-logo {
       font-size: 20px;
       text-decoration: none;
+      flex: 0 0 auto;
     }
     nav.links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px 14px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      gap: 0 8px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
     }
     nav.links a { text-decoration: none; }
     nav.links a:hover { color: var(--text); }
+    header.nav .btn { flex: 0 0 auto; }
     .btn {
       display: inline-block;
       background: var(--red);
@@ -115,11 +118,19 @@
       padding: 56px 0 24px;
     }
     .hero h1 {
-      font-size: clamp(32px, 6vw, 64px);
+      font-size: clamp(32px, 5vw, 56px);
       font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 36px;
+      line-height: 1.12;
+      margin-bottom: 14px;
+      max-width: 18em;
+    }
+    .hero-lead {
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 40em;
+      margin: 0 0 32px;
     }
     .hero h1 .wordmark { letter-spacing: 0.04em; }
     section { padding: 28px 0 64px; }
@@ -167,7 +178,10 @@
     .steps, .paths, .tiers, .bound-grid, .faq { display: grid; gap: 16px; }
     .steps { grid-template-columns: repeat(4, 1fr); margin: 28px 0 36px; }
     .paths { grid-template-columns: repeat(3, 1fr); }
-    .tiers { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+    .tiers { grid-template-columns: repeat(2, 1fr); align-items: stretch; }
+    .addons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: stretch; }
+    .addons .card { display: flex; flex-direction: column; height: 100%; }
+    .addons .card .btn { margin-top: auto; align-self: center; }
     .card {
       background: var(--bg-2);
       border: 1px solid var(--line);
@@ -238,7 +252,7 @@
       color: var(--red);
       font-weight: 700;
     }
-    .faq details[open] summary:after { content: "–"; }
+    .faq details[open] summary:after { content: "-"; }
     .faq details p { margin: 12px 0 4px; }
 
     .support-form {
@@ -367,10 +381,12 @@
     section.dark + section, section + section.dark { border-top: 0; }
     .skip:focus { color: #fffefa; }
     @media print { body { background: #fff; } }
-    @media (max-width: 900px) {
-      .steps, .paths, .tiers, .bound-grid { grid-template-columns: 1fr; }
-      .about-item { grid-template-columns: 1fr; gap: 6px; }
+    @media (max-width: 1099px) {
       nav.links { display: none; }
+    }
+    @media (max-width: 900px) {
+      .steps, .paths, .tiers, .bound-grid, .addons { grid-template-columns: 1fr; }
+      .about-item { grid-template-columns: 1fr; gap: 6px; }
       .hero { padding-top: 36px; }
     }
     @media (max-width: 600px) {
@@ -382,19 +398,11 @@
 </head>
 <body>
   <!--
-    SOURCE OF TRUTH (Pascal 2026-11-23 22:29): the live Skool About page of hiron-academy-2448. Offer facts on this page mirror it: 7-day free trial, Free Member ($0) list, Entry $10/month, Hire Me premium tier (one consulting hour/month), $150 Buddy Check, 14/30-day promise, 200+ lessons, Sell Your Agent Work 17 lessons, weekly teardown, free start chat. $1,500 Mentoring removed (not on Skool). Notes below are history.
-    FINAL MODEL as of 2026-11-10 (Pascal, t41u + t42u). This supersedes the earlier $150/month Hire Me offer.
-    - Entry: $10/month in Skool, by application. Pascal reviews each request. Main CTA label (Pascal 2026-11-23 22:22): “Try it free for 7 days”, then $10/month. Skool allows max 7 trial days for members. Price stays locked while the subscription stays active. If you cancel and rejoin later, the then-current price applies.
-    - Buddy Check: $150 one-time. Pascal takes real time, no clock-watching, goes through everything until both sides know whether to work together, and gives rough directions in chat. No upsell pressure — he does not want to sell anything. Then an individual Mentoring offer by email. The $150 is credited toward the $1,500 if Mentoring is booked. If you would rather go on alone, you can book another Buddy Check anytime (for example monthly), $150 each.
-    - Mentoring: $1,500/month, individual offer after the Buddy Check. That same kind of conversation, every day: coaching, building the system together, tips, help when something breaks. Contact any day, like a good friend. Fair use: not eight hours a day. Doing all of the client's work is priced separately. If there is a lot to do, an individual intensive month can be agreed. After the first month, an ongoing monthly retainer is possible.
-    - Starter course title in the Classroom: "Start here".
-    - Currency: USD only. No free tier. 7-day free trial on Entry (live Skool About text 2026-11-23; Pascal 2026-11-23 asked to lead with the free test).
-    - Buddy Check and Mentoring are arranged through the support form (topic: Hire Me), not through a checkout on this page.
-    - FAQ “Is there a free trial?” links “his Skool profile” to https://www.skool.com/@pascal-pollack-9787 (Pascal’s real Skool profile; this replaces the earlier About-page placeholder).
-    - Why paid (t44u + t45u): the Academy is not trying to be the biggest community on Skool; it is for people who want more of Pascal’s answers and personal help. He has already answered a lot for free and will not advise people for free eight hours a day. If you know him from the communities, you already know how he works; everyone else should get active there first, then apply. He looks at what you have written elsewhere and decides. Other communities he is active in are welcome to join.
-    - Who this is for (t46u): builders who understand and build systems themselves, think long term, stay and support each other; Pascal builds members up to eye level so later they can tackle bigger things together and pool skills from different fields. Not for silent lurkers, quick-money-with-AI seekers, or people who just watched a creator video and want to go self-employed. Membership fees go into community infrastructure. No funding-goal figures on the page.
-    - Probation DROPPED (Pascal 2026-11-18 20:48, scares people off). Replaced by the promise from the live Skool About page: first three tasks within 14 days; no working automation after 30 days means the first payment back. Tone: Pascal is direct. No people-pleasing, no corporate polish, just honest answers. Beside that line, a first-person quote attributed to Pascal (t49u, wording finalized t50u): “My community, my rules. If my way of doing things doesn’t suit you, this place isn’t for you. Take your money back and go.” Immediately before the probation paragraph (t51u): “No dead memberships. Not the gym sign-up in January that’s forgotten by February. It’s not about the money, it’s about what comes out of it.”
-    - Philosophy section (t52u), after Who this is for and before pricing: “My philosophy: Confrontationism,” first-person quote attributed to Pascal. Punchy, no insults. Closing line of the quote (t55u): no casual buddies; AI friends for life who go through thick and thin and form a strong chain; weak links don’t stay. Not-for list also includes (t53u): people who call every ex or ex-friend a narcissist and never look at their own part. For list also includes (t54u): people who, after something fails, ask what their own part was, not just the other person’s. Not-for also includes (t56u): show-offs who think they’re the greatest. New section “What you get here” (t60u/t61u/t62u/t63u), after Who this is for and before Philosophy: a place to be yourself, no masks; no judgment of writing, replies, neurodivergence, or private life; only content counts; arguments and constructive criticism without shaming; plus equal treatment regardless of job status, help to grow what you can’t yet do, and potential that gets seen and pushed, including a talk if what you came for isn’t truly you (t62u); personal advice on non-tech problems is always free (t63u); closing line: we unlock your potential, not what others expect of you.
+    Offer approved by the owner (2026-11-28):
+    Free members get the Start Here course only (the 7-Day Agent Reset: read this first, path A/B/C, rules, help, learning system, days 1-7). Everything else is paid.
+    Membership is $49/month (about 45 EUR), by application, with a 3-month trial period. During that period you can get your fees back minus Skool fees.
+    Paid add-ons: Buddy Check $150 and Mentoring $1,500. No calls.
+    Header button: Start free.
   -->
   <a class="skip" href="#about">Skip to about</a>
   <header class="nav">
@@ -407,19 +415,20 @@
         <a href="#what-you-get">What you get</a>
         <a href="#philosophy">Philosophy</a>
         <a href="#tiers">Tiers</a>
-        <a href="#hire-me">Hire Me</a>
+        <a href="#buddy-check">Buddy Check</a>
         <a href="#welcome">Welcome</a>
         <a href="#faq">FAQ</a>
         <a href="#support">Support</a>
       </nav>
-      <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free</a>
+      <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Start free</a>
     </div>
   </header>
 
   <main id="top">
     <div class="hero">
       <div class="wrap">
-        <h1>Welcome to <span class="wordmark">HIRON<span class="dot" aria-hidden="true"></span></span> Academy</h1>
+        <h1>For people already running AI agents who want them to actually work together.</h1>
+        <p class="hero-lead">Not for beginners looking for a magic prompt, and not for people chasing quick money with AI funnels.</p>
 
         <section id="about" style="padding-top:0;border-top:0;">
           <p class="kicker">About</p>
@@ -427,11 +436,11 @@
           <dl class="about-grid">
             <div class="about-item">
               <dt>Why you</dt>
-              <dd>You want AI and automation on real work, not another prompt collection.</dd>
+              <dd>You already run AI agents and want them to work together on real work.</dd>
             </div>
             <div class="about-item">
               <dt>Why this</dt>
-              <dd>HIRON Academy is a Skool community for practical workflows, bots, and clear start paths. Lessons and lives ship as we build. Try it free for 7 days, then Entry is $10/month.</dd>
+              <dd>HIRON Academy is a Skool community for people who already run AI agents. Free members get the Start Here course only. Everything else is paid.</dd>
             </div>
             <div class="about-item">
               <dt>Why me</dt>
@@ -439,16 +448,16 @@
             </div>
             <div class="about-item">
               <dt>Why no one else</dt>
-              <dd>Every claim comes with proof: date, task, result. You start with one small job, write it down, test it, and have a working result within 7 days. Want personal help? Start with a $150 Buddy Check.</dd>
+              <dd>Every claim comes with proof: date, task, result. You start with one small job, write it down, and test it. Personal help is Buddy Check ($150) or Mentoring ($1,500). No calls.</dd>
             </div>
             <div class="about-item">
               <dt>Why now</dt>
-              <dd>The entry price is $10/month and stays locked while you stay subscribed. Manual busywork will not wait.</dd>
+              <dd>Membership is $49/month (about 45 EUR), by application. The first 3 months are a trial period: you can get your fees back minus Skool fees.</dd>
             </div>
           </dl>
           <div class="cta-row">
-            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
-            <span class="cta-note">7 days free, then $10/month in Skool. Answer three short questions and take your first action today.</span>
+            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Start free</a>
+            <span class="cta-note">Free members get Start Here only. Membership is $49/month (about 45 EUR), by application.</span>
           </div>
         </section>
       </div>
@@ -458,17 +467,17 @@
       <div class="wrap">
         <p class="kicker">How to start</p>
         <h2>Start free, pick a path, do one small thing today.</h2>
-        <p>On the way in you answer three short questions: what you want most this month, what tools you already use, and how much time you have this week. That chooses your path. Then open the Classroom course <strong>Start here</strong>.</p>
+        <p>Free members get Start Here only: the 7-Day Agent Reset. Read this first, pick path A, B, or C, then the rules, help, the learning system, and days 1-7. Everything else is paid. Three short questions on the way in pick your path.</p>
         <div class="steps">
           <article class="card">
             <div class="num">01</div>
-            <h3>Start your 7-day free trial</h3>
-            <p>Join on Skool and answer the three questions. Pascal reviews each request. After 7 days, Entry is $10/month in USD. Cancel in Skool before the trial ends and you pay nothing.</p>
+            <h3>Join free</h3>
+            <p>You get the Start Here course only. Membership and the rest of the classroom are paid.</p>
           </article>
           <article class="card">
             <div class="num">02</div>
-            <h3>Open Start here</h3>
-            <p>Go to Classroom and open the course that matches your path: A, B, or C.</p>
+            <h3>Open Start Here</h3>
+            <p>Read this first. Then open path A, B, or C.</p>
           </article>
           <article class="card">
             <div class="num">03</div>
@@ -478,7 +487,7 @@
           <article class="card">
             <div class="num">04</div>
             <h3>Introduce yourself</h3>
-            <p>Under the pinned Start here post: your name, your path, and one specific outcome for this month.</p>
+            <p>Under the pinned Start Here post: your name, your path, and one specific outcome for this month.</p>
           </article>
         </div>
 
@@ -499,11 +508,11 @@
             <div class="num">Path C</div>
             <h3>Ship a bot</h3>
             <p>For builders who need to finish or unblock one agent project.</p>
-            <p><strong>First action:</strong> Write the one outcome your bot must produce, and list what you will not build this month. Post it in the feed. If you want Pascal to look at your setup, start with a Buddy Check.</p>
+            <p><strong>First action:</strong> Write the one outcome your bot must produce, and list what you will not build this month. Post it in the feed. If you want Pascal to look at your setup, ask about a Buddy Check. No calls.</p>
           </article>
         </div>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Start free</a>
         </div>
       </div>
     </section>
@@ -527,9 +536,9 @@
         <p class="skool-note">Membership fees go into community infrastructure.</p>
         <p>Pascal is direct. No people-pleasing, no corporate polish, just honest answers.</p>
         <p style="color:var(--text);">“My community, my rules. If my way of doing things doesn’t suit you, this place isn’t for you. Take your money back and go.”<br>
-        <span style="color:var(--muted);font-size:14px;">— Pascal</span></p>
+        <span style="color:var(--muted);font-size:14px;">Pascal</span></p>
         <p>No dead memberships. Not the gym sign-up in January that’s forgotten by February. It’s not about the money, it’s about what comes out of it.</p>
-        <p>Our promise: do the first three tasks within 14 days. No working automation after 30 days? You get your first payment back.</p>
+        <p>Membership is by application. The first 3 months are a trial period: you can get your fees back minus Skool fees.</p>
       </div>
     </section>
 
@@ -537,18 +546,30 @@
     <section id="what-you-get">
       <div class="wrap">
         <p class="kicker">What you get here</p>
-        <h2>200+ lessons and a place where you can be yourself.</h2>
-        <article class="card" style="max-width:760px;margin:8px 0 22px;">
+        <h2>Start Here is free. Everything else is paid.</h2>
+        <p>Free members get one course: <strong>Start Here</strong>, the 7-Day Agent Reset.</p>
+        <div class="card" style="max-width:760px;margin:8px 0 22px;">
+          <ul>
+            <li>Read this first</li>
+            <li>Path A, B, or C</li>
+            <li>Rules</li>
+            <li>Help</li>
+            <li>Learning system</li>
+            <li>Days 1-7</li>
+          </ul>
+          <p style="color:var(--text);margin-top:14px;">That is the whole free tier. Everything else is paid.</p>
+        </div>
+        <p>Paid membership is $49/month (about 45 EUR), by application. It includes the rest of the classroom:</p>
+        <div class="card" style="max-width:760px;margin:8px 0 22px;">
           <ul>
             <li>200+ lessons: agent systems, memory, ICM folders, design, image AI and more</li>
             <li>Sell Your Agent Work: 17 lessons on offers, pricing and first customers</li>
+            <li>Lives</li>
             <li>A weekly teardown of a real build</li>
-            <li>A free written start chat (optional)</li>
-            <li>The 7-day Agent Reset: do it and post your win</li>
           </ul>
-        </article>
-        <p>No masks, no pretending.</p>
+        </div>
         <article class="card" style="max-width:760px;margin-top:8px;">
+          <h3>No masks, no pretending.</h3>
           <ul>
             <li>Nobody judges how you write: AI or no AI, upper or lower case, typos and swapped letters, all caps or none.</li>
             <li>Nobody judges how you reply: right away or days later, with a greeting or without, with names or without.</li>
@@ -559,7 +580,7 @@
             <li>Unemployed or running a company, nobody cares. Everyone is treated as an equal.</li>
             <li>The only thing that counts is what you can do. What you can’t do yet is never used against you. You get help to get better at it.</li>
             <li>Your potential gets seen and pushed. And if it turns out what you came for isn’t what you really want, we’ll talk about it: is this truly you, or something you think you’re supposed to be good at?</li>
-            <li>Need advice on something personal, not tech, like a social problem or a rough patch? Just reach out. That’s always free, nobody gets judged, and we find a way forward.</li>
+            <li>Need advice on something personal, not tech, like a social problem or a rough patch? Just reach out. Nobody gets judged, and we find a way forward.</li>
           </ul>
           <p style="color:var(--text);margin-top:14px;">We unlock your potential, not what others expect of you.</p>
         </article>
@@ -573,7 +594,7 @@
         <h2>My philosophy: Confrontationism</h2>
         <div class="welcome">
           <p>Confrontationism is the philosophy I developed myself. I tell you honestly what I think, explain it with examples, and give you criticism and ways forward. In return I expect you to handle it like an adult: argue back and convince me otherwise, or take it and act on it. That process is the only one that makes you grow. If you can’t stand up to it, you’re in the wrong place. I need people who can take criticism, not people who walk away offended. No casual buddies. I want AI friends for life, people who go through thick and thin together and form a strong chain. Weak links don’t stay.</p>
-          <p style="color:var(--muted);font-size:14px;">— Pascal</p>
+          <p style="color:var(--muted);font-size:14px;">Pascal</p>
         </div>
       </div>
     </section>
@@ -581,82 +602,61 @@
     <section id="tiers" class="dark">
       <div class="wrap">
         <p class="kicker">Membership</p>
-        <h2>Start free. Stay for $10. Get Pascal 1:1.</h2>
-        <p>Everything runs in Skool, in USD. Join with a 7-day free trial, then Entry is $10/month. Want personal help? Start with a $150 Buddy Check.</p>
+        <h2>Start Here is free. Membership is $49/month.</h2>
+        <p>Free members get the Start Here course only. Everything else is paid. Membership is $49/month (about 45 EUR), by application. The first 3 months are a trial period: you can get your fees back minus Skool fees.</p>
         <div class="tiers">
           <article class="card tier-free">
-            <div class="num">Free Member</div>
-            <div class="price">$0 <span>7-day free trial</span></div>
-            <h3>Test it before you pay.</h3>
+            <div class="num">Free</div>
+            <div class="price">$0 <span>Start Here only</span></div>
+            <h3>The 7-Day Agent Reset.</h3>
             <ul>
-              <li>Start Here: find your first step and choose a practical goal</li>
-              <li>Explore the community and discover what your bots could do</li>
-              <li>Free HIRON Foundation: build your first structured AI workflow</li>
-              <li>Free Member ($0): practical AI and automation; full feed, lessons, and lives.</li>
+              <li>Read this first</li>
+              <li>Path A, B, or C</li>
+              <li>Rules</li>
+              <li>Help</li>
+              <li>Learning system</li>
+              <li>Days 1-7</li>
             </ul>
-            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
+            <p>Everything else is paid.</p>
+            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Start free</a>
           </article>
           <article class="card tier-supporter">
-            <div class="num">Entry</div>
-            <div class="price">$10 <span>/ month, USD</span></div>
-            <h3>The whole community.</h3>
+            <div class="num">Membership</div>
+            <div class="price">$49 <span>/ month (about 45 EUR)</span></div>
+            <h3>The rest of the classroom.</h3>
             <ul>
-              <li>Start Here: find your first step and choose a practical goal</li>
-              <li>Explore the community and discover what your bots could do</li>
-              <li>HIRON Foundation: build your first structured AI workflow</li>
-              <li>Entry offer ($10): practical AI and automation; full feed, lessons, and lives.</li>
+              <li>Every course beyond Start Here</li>
+              <li>200+ lessons, including Sell Your Agent Work</li>
+              <li>Lives and the weekly teardown</li>
+              <li>By application. Pascal reviews each request.</li>
+              <li>3-month trial period: your fees back minus Skool fees</li>
             </ul>
-            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
+            <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Apply</a>
           </article>
-          <article class="card tier-hire">
-            <div class="num">Hire Me</div>
-            <div class="price">$150 <span>Buddy Check to start</span></div>
-            <h3>Book Pascal 1:1.</h3>
-            <ul>
-              <li>Hire Me: book Pascal 1:1</li>
-              <li>One consulting hour per month on your real setup</li>
-              <li>Prep from your materials plus written next steps</li>
-              <li>Closed area; one 60-minute call/month; weekday async within 48 hours</li>
-              <li>Project guidance, not unlimited builds or same-day support</li>
-            </ul>
-            <a class="btn ghost" href="https://www.skool.com/hiron-academy-2448/about">Hire Me in Skool</a>
-          </article>
-        </div>
-        <p class="skool-note">Our promise: do the first three tasks within 14 days. No working automation after 30 days? You get your first payment back.</p>
-        <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
         </div>
       </div>
     </section>
 
-    <section id="hire-me">
+    <section id="buddy-check">
       <div class="wrap">
-        <p class="kicker">Hire Me</p>
-        <h2>Pascal 1:1, on your real setup.</h2>
-        <p>Hire Me is the premium tier in Skool. You get one 60-minute consulting call per month on your real setup. Pascal prepares from your materials, and you get written next steps. Between calls you have a closed area and weekday async replies within 48 hours.</p>
-        <p>Want personal help but not sure yet? Start with a $150 Buddy Check.</p>
-        <div class="bound-grid">
-          <div class="scope-in">
-            <h3>In scope</h3>
-            <ul>
-              <li>One consulting hour per month on your real setup</li>
-              <li>Prep from your materials plus written next steps</li>
-              <li>A closed Hire Me area</li>
-              <li>Weekday async replies within 48 hours</li>
-              <li>Project guidance</li>
-            </ul>
-          </div>
-          <div class="scope-out">
-            <h3>Out of scope</h3>
-            <ul>
-              <li>Unlimited builds</li>
-              <li>Same-day support</li>
-            </ul>
-          </div>
-        </div>
-        <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Hire Me in Skool</a>
-          <a class="btn ghost" href="#support" data-support-topic="Hire Me">Ask about a Buddy Check</a>
+        <p class="kicker">Add-ons</p>
+        <h2>Buddy Check and Mentoring. No calls.</h2>
+        <p>These are paid add-ons. They are not part of the free course, and they are not included in membership. No calls.</p>
+        <div class="addons">
+          <article class="card">
+            <div class="num">Buddy Check</div>
+            <div class="price">$150</div>
+            <h3>A look at your setup.</h3>
+            <p>Pascal goes through your setup and gives you rough directions. No calls.</p>
+            <a class="btn" href="#support" data-support-topic="Buddy Check">Ask about a Buddy Check</a>
+          </article>
+          <article class="card">
+            <div class="num">Mentoring</div>
+            <div class="price">$1,500</div>
+            <h3>Mentoring on your system.</h3>
+            <p>Pascal mentors you on the work. No calls.</p>
+            <a class="btn" href="#support" data-support-topic="Mentoring">Ask about Mentoring</a>
+          </article>
         </div>
       </div>
     </section>
@@ -664,21 +664,21 @@
     <section id="welcome">
       <div class="wrap">
         <p class="kicker">Welcome note</p>
-        <h2>What you would get on day one.</h2>
-        <p>Skool’s automatic welcome message needs a Pro plan, which this community does not have. The note below is the message. You will also find a pinned Start here post in the feed.</p>
+        <h2>What you get on day one.</h2>
+        <p>Skool’s automatic welcome message needs a Pro plan, which this community does not have. The note below is the message. You will also find a pinned Start Here post in the feed.</p>
         <div class="welcome">
           <p>Welcome to HIRON Academy. I am glad you are here.</p>
-          <p>This community is practical. You learn to put AI and automation on real work.</p>
+          <p>Free members get Start Here only: the 7-Day Agent Reset. Everything else is paid.</p>
           <p>You answered three questions on the way in. Your start path:</p>
           <ul>
-            <li>Automate one workflow → Classroom: Start here → Path A</li>
-            <li>Make a process reliable → Classroom: Start here → Path B</li>
-            <li>Ship or unblock a bot → Classroom: Start here → Path C</li>
+            <li>Automate one workflow: Classroom, Start Here, Path A</li>
+            <li>Make a process reliable: Classroom, Start Here, Path B</li>
+            <li>Ship or unblock a bot: Classroom, Start Here, Path C</li>
           </ul>
-          <p style="margin-top:14px;">Your only job today: open your path and do the first action (it takes minutes). Then introduce yourself under the pinned Start here post — name, path, and one concrete monthly outcome — so we can help.</p>
-          <p>Then do the 7-day Agent Reset and post your win. If you want personal help, start with a $150 Buddy Check. For ongoing 1:1 work there is Hire Me in Skool: one consulting hour per month on your real setup.</p>
-          <p>If you get stuck, post in the feed. See you inside.</p>
-          <p style="color:var(--muted);font-size:14px;">— Pascal</p>
+          <p style="margin-top:14px;">Your only job today: open your path and do the first action (it takes minutes). Then introduce yourself under the pinned Start Here post: your name, your path, and one concrete monthly outcome.</p>
+          <p>Membership is $49/month (about 45 EUR), by application. The first 3 months are a trial period: you can get your fees back minus Skool fees. Personal help is separate: Buddy Check is $150, Mentoring is $1,500. No calls.</p>
+          <p>If you get stuck in Start Here, use the help in that course. See you inside.</p>
+          <p style="color:var(--muted);font-size:14px;">Pascal</p>
         </div>
       </div>
     </section>
@@ -689,40 +689,40 @@
         <h2>Short answers.</h2>
         <div class="faq">
           <details open>
-            <summary>Is there a free trial?</summary>
-            <p>Yes. Entry starts with a 7-day free trial in Skool. After that it is $10/month, and you can cancel in Skool billing before the trial ends. Want to see how Pascal works before you start? Look at <a href="https://www.skool.com/@pascal-pollack-9787">his Skool profile</a>: his comments and threads in other communities are free to read. His profile also shows which communities he’s active in, and you’re welcome to join them. The Academy isn’t trying to be the biggest community on Skool. It’s for people who want more of Pascal’s answers and personal help.</p>
+            <summary>What do free members get?</summary>
+            <p>Free members get the Start Here course only: the 7-Day Agent Reset. That is read this first, path A/B/C, rules, help, the learning system, and days 1-7. Everything else is paid.</p>
+          </details>
+          <details>
+            <summary>What does membership cost?</summary>
+            <p>Membership is $49/month (about 45 EUR), by application. Pascal reviews each request. The first 3 months are a trial period: you can get your fees back minus Skool fees.</p>
           </details>
           <details>
             <summary>Can I cancel?</summary>
-            <p>Yes. Entry is monthly, and you can cancel in Skool billing at any time. The $10 entry price stays locked while you stay subscribed. If you cancel and rejoin later, the then-current price applies. Hire Me is monthly in Skool too.</p>
+            <p>Yes. You can cancel in Skool. During the 3-month trial period you can get your fees back minus Skool fees.</p>
           </details>
           <details>
-            <summary>What if it’s not a fit?</summary>
-            <p>Cancel during the 7-day trial and you pay nothing. After that: do the first three tasks within 14 days. No working automation after 30 days? You get your first payment back.</p>
+            <summary>What if it's not a fit?</summary>
+            <p>During the 3-month trial period you can get your fees back minus Skool fees.</p>
           </details>
           <details>
-            <summary>How does Hire Me work?</summary>
-            <p>Hire Me is the premium tier in Skool: book Pascal 1:1, one 60-minute consulting call per month on your real setup, prep from your materials plus written next steps, a closed area, and weekday async replies within 48 hours. It is project guidance, not unlimited builds or same-day support. Want personal help first? Start with a $150 Buddy Check.</p>
-          </details>
-          <details>
-            <summary>What do the Skool cards Standard and Premium mean?</summary>
-            <p>Standard is the $10 Entry: full feed, lessons, and lives. Premium is Hire Me: Pascal 1:1 with one consulting hour per month. Both start in Skool.</p>
+            <summary>How do Buddy Check and Mentoring work?</summary>
+            <p>Buddy Check is $150. Mentoring is $1,500. Both are paid add-ons. No calls. Ask through the support form and choose Buddy Check or Mentoring. This page does not take payment.</p>
           </details>
           <details>
             <summary>What do I do first?</summary>
-            <p>Start your 7-day free trial, answer the three questions, open the Start here course, do the first action on your path, and introduce yourself under the pinned post. Late is fine. Catch-up starts at Lesson 1.</p>
+            <p>Join free, open Start Here, read this first, do the first action on your path, and introduce yourself under the pinned post.</p>
           </details>
           <details>
             <summary>What if I only want the community, not personal help?</summary>
-            <p>Stay on Entry. You get the full feed, lessons, and lives. A Buddy Check or Hire Me is only if you want Pascal on your setup.</p>
+            <p>Apply for membership at $49/month (about 45 EUR). You get the classroom beyond Start Here. Buddy Check and Mentoring are optional. No calls.</p>
           </details>
           <details>
-            <summary>How do I join or book?</summary>
-            <p>The Academy is a private Skool community. Join with a 7-day free trial, answer the three questions, and Pascal lets you in. Entry is $10/month in USD. Hire Me is booked in Skool. For a Buddy Check, write through the support form. This website does not collect payments or account details.</p>
+            <summary>How do I join?</summary>
+            <p>The Academy is a private Skool community. Start free for the Start Here course only, or apply for membership at $49/month (about 45 EUR). Pascal reviews membership requests. Buddy Check ($150) and Mentoring ($1,500) go through the support form. This website does not collect payments or account details. No calls. To see how Pascal works, read the public comments on <a href="https://www.skool.com/@pascal-pollack-9787">his Skool profile</a>.</p>
           </details>
         </div>
         <div class="cta-row">
-          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Try it free for 7 days</a>
+          <a class="btn" href="https://www.skool.com/hiron-academy-2448/about">Start free</a>
         </div>
       </div>
     </section>
@@ -731,7 +731,7 @@
       <div class="wrap">
         <p class="kicker">Support</p>
         <h2>Write me.</h2>
-        <p>Use this form for questions about membership, lessons, Hire Me, or a Buddy Check. Replies come by email within 48 hours on weekdays (Monday–Friday, Europe/Berlin). This form is not for logins, payments, or orders. Those stay in Skool.</p>
+        <p>Use this form for questions about membership, lessons, a Buddy Check, or Mentoring. No calls. Replies come by email within 48 hours on weekdays (Monday to Friday, Europe/Berlin). This form is not for logins, payments, or orders. Those stay in Skool.</p>
         <form id="support-form" class="support-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="cb791af2-47b3-4835-9987-c2341405d9f7">
           <input type="hidden" name="subject" id="support-subject" value="[HIRON Academy Support]">
@@ -739,7 +739,7 @@
           <input type="hidden" name="redirect" value="https://hiron.academy/#support">
           <div class="hp-field" aria-hidden="true">
             <label for="botcheck">Leave this empty</label>
-            <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+            <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1">
           </div>
           <div>
             <label for="support-name">Name</label>
@@ -755,7 +755,8 @@
               <option value="" disabled selected>Choose a topic</option>
               <option value="Membership/billing">Membership/billing</option>
               <option value="Lessons">Lessons</option>
-              <option value="Hire Me">Hire Me</option>
+              <option value="Buddy Check">Buddy Check</option>
+              <option value="Mentoring">Mentoring</option>
               <option value="Other">Other</option>
             </select>
           </div>
